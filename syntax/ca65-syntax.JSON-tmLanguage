@@ -1,0 +1,154 @@
+{
+    "fileTypes": [
+        "a", 
+        "s", 
+        "asm"
+    ], 
+    "name": "CA65 Assembly", 
+    "uuid": "eabd7ea6-d4a4-44e8-ad3c-d952e5cc95cf", 
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "match": ";.*$", 
+                    "name": "comment.line.ca65"
+                }
+            ]
+        }, 
+        "functions": {
+            "patterns": [
+                {
+                    "match": "(\\.bankbyte|\\.blank|\\.concat|\\.const|\\.hibyte|\\.hiword|\\.ident|\\.left|\\.lobyte|\\.loword|\\.match|\\.mid|\\.ref|\\.referenced|\\.right|\\.sizeof|\\.strat|\\.sprintf|\\.string|\\.strlen|\\.tcount|\\.xmatch)\\b", 
+                    "name": "function.language.ca65"
+                }
+            ]
+        }, 
+        "strings": {
+            "patterns": [
+                {
+                    "end": "\"", 
+                    "name": "string.quoted.double.ca65", 
+                    "patterns": [
+                        {
+                            "match": "\\.", 
+                            "name": "constant.character.escape.ca65"
+                        }
+                    ], 
+                    "begin": "\"", 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.begin.ca65"
+                        }
+                    }, 
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.end.ca65"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "constants": {
+            "patterns": [
+                {
+                    "match": "\\s#((\\$[0-9a-fA-F]+)|(\\%[01]+)|([0-9]+)|([0-9a-fA-F]h))", 
+                    "name": "constant.numeric.ca65"
+                }
+            ]
+        }, 
+        "variables": {
+            "patterns": [
+                {
+                    "match": "^\\s*[\\w_]+\\s*(?=\\=)", 
+                    "name": "variable.definition.ca65"
+                }, 
+                {
+                    "match": "(\\*|\\.cpu|\\.paramcount|\\.time|\\.version)\\b", 
+                    "name": "variable.language.ca65"
+                }
+            ]
+        }, 
+        "labels": {
+            "patterns": [
+                {
+                    "match": "^\\s*\\b[\\w_@]+:", 
+                    "name": "entity.label.global.ca65"
+                }, 
+                {
+                    "match": "^\\s*@[\\w_@]+:", 
+                    "name": "entity.label.local.ca65"
+                }
+            ]
+        }, 
+        "addresses": {
+            "patterns": [
+                {
+                    "match": "(?![\\w_#])((\\$[0-9a-fA-F]+)|(\\%[01]+)|([0-9]+)|([0-9a-fA-F]h))(?![\\w_#])", 
+                    "name": "storage.address.ca65"
+                }
+            ]
+        }, 
+        "commands": {
+            "patterns": [
+                {
+                    "match": "(\\.a16|\\.a8|\\.align|\\.assert|\\.autoimport|\\.bankbytes|\\.bss|\\.case|\\.charmap|\\.code|\\.condes|\\.constructor|\\.data|\\.debuginfo|\\.define|\\.def|\\.defined|\\.destructor|\\.else|\\.elseif|\\.end|\\.endenum|\\.endif|\\.endmac|\\.endmacro|\\.endproc|\\.endrep|\\.endrepeat|\\.endscope|\\.endstruct|\\.enum|\\.error|\\.exitmac|\\.exitmacro|\\.export|\\.exportzp|\\.feature|\\.fileopt|\\.fopt|\\.forceimport|\\.global|\\.globalzp|\\.i16|\\.i8|\\.if|\\.ifblank|\\.ifconst|\\.ifdef|\\.ifnblank|\\.ifndef|\\.ifnref|\\.ifp02|\\.ifp816|\\.ifpc02|\\.ifpsc02|\\.ifref|\\.import|\\.importzp|\\.incbin|\\.include|\\.interruptor|\\.linecont|\\.list|\\.listbytes|\\.local|\\.localchar|\\.macpack|\\.mac|\\.macro|\\.org|\\.out|\\.p02|\\.p816|\\.pagelen|\\.pagelength|\\.pc02|\\.popseg|\\.proc|\\.psc02|\\.pushseg|\\.reloc|\\.repeat|\\.res|\\.rodata|\\.scope|\\.segment|\\.setcpu|\\.smart|\\.struct|\\.sunplus|\\.tag|\\.warning|\\.zeropage)\\b", 
+                    "name": "keyword.command.ca65"
+                }, 
+                {
+                    "match": "(\\.addr|\\.asciiz|\\.byt|\\.byte|\\.dbyt|\\.dword|\\.faraddr|\\.hibytes|\\.lobytes|\\.word)\\b", 
+                    "name": "keyword.definition.ca65"
+                }
+            ]
+        }, 
+        "keywords": {
+            "patterns": [
+                {
+                    "match": "\\b(adc|and|asl|bit|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|sbc|sec|sed|sei|sta|stx|sty|tax|tay|tsx|txa|txs|tya)\\b", 
+                    "name": "keyword.opcode.default.ca65"
+                }, 
+                {
+                    "match": "\\b(bcc|bcs|beq|bmi|bne|bpl|brk|bvc|bvs|jmp|jsr|rti|rts)\\b", 
+                    "name": "keyword.opcode.control.ca65"
+                }, 
+                {
+                    "match": "\\b(jcc|jcs|jeq|jmi|jne|jpl|jvc|jvs)\\b", 
+                    "name": "keyword.opcode.control.longbranch.ca65"
+                }, 
+                {
+                    "match": "\\b(aac|aax|alr|anc|ane|arr|aso|asr|atx|axa|axs|dcm|dcp|dop|hlt|ins|isb|isc|jam|kil|lae|lar|las|lax|lse|lxa|oal|rla|rra|sax|sbx|skb|sha|shs|say|shx|shy|slo|skw|sre|sxa|sya|tas|top|xaa|xas)\\b", 
+                    "name": "invalid.deprecated.ca65"
+                }
+            ]
+        }
+    }, 
+    "scopeName": "source.ca65", 
+    "patterns": [
+        {
+            "include": "#keywords"
+        }, 
+        {
+            "include": "#variables"
+        }, 
+        {
+            "include": "#functions"
+        }, 
+        {
+            "include": "#commands"
+        }, 
+        {
+            "include": "#labels"
+        }, 
+        {
+            "include": "#addresses"
+        }, 
+        {
+            "include": "#constants"
+        }, 
+        {
+            "include": "#strings"
+        }, 
+        {
+            "include": "#comments"
+        }
+    ]
+}
